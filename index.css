@@ -1,9 +1,10 @@
 body {
-    background-color: lightblue
+    background: lightblue;
 }
 
 h1 {
-    font-family: 'Brush Script MT', cursive;
+    font-family: 'Brush Script MT';
+    text-decoration: wavy;
     font-size: x-large;
     color: blueviolet;
     text-shadow: 1ch;
