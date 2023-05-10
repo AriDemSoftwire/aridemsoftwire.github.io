@@ -1,11 +1,35 @@
 body {
     background: lightblue;
+    text-align: center;
+    font-family: 'Courier New';
+    margin: 0;
 }
 
 h1 {
     font-family: 'Brush Script MT';
     text-decoration: wavy;
-    font-size: x-large;
+    font-size: xx-large;
     color: blueviolet;
-    text-shadow: 1ch;
+    margin: 0;
+}
+
+h2 {
+    font-family: 'Brush Script MT';
+    font-size: x-large;
+    color: rgb(22, 6, 37);
+}
+
+ul {
+    text-align: left;
+}
+
+.container {
+    display: block;
+    width: 600px;
+    background-color: #d5e4f2;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    height:100vh;
 }
