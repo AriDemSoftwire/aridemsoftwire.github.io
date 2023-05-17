@@ -17,6 +17,51 @@
     max-width: 1000px;
   }
 }
+.container .flexbox-top {
+  display: flex;
+  flex-direction: row;
+}
+.container .flexbox-top .profile-picture {
+  position: relative;
+  padding-top: 15px;
+}
+.container .flexbox-top .profile-picture img {
+  border-radius: 50%;
+  width: 225px;
+  height: 200px;
+  padding: 20px;
+}
+.container .flexbox-top .profile-picture .ribbon-image img {
+  position: absolute;
+  top: 175px;
+  width: 225px;
+  height: 75px;
+  padding-left: 20px;
+}
+.container .flexbox-top .overlay-image img {
+  height: 30px;
+  width: 70px;
+  top: 45px;
+  left: 200px;
+  position: absolute;
+  display: none;
+}
+.container .flexbox-top .dog-description {
+  padding-top: 30px;
+  padding-left: 30px;
+}
+.container .bork-button {
+  padding-top: 30px;
+}
+.container .bork-button button {
+  background-color: #b0bec1;
+  border: none;
+  color: #30393a;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px;
+}
 
 .navbar {
   max-width: 100%;
@@ -61,9 +106,13 @@
 .navbar li a:hover {
   background-color: #546a6f;
 }
+.navbar .active {
+  background-color: #546a6f;
+}
 
 body {
   margin: 0px;
+  font-family: "Verdana";
 }
 
 /*# sourceMappingURL=fancy_dog.css.map */

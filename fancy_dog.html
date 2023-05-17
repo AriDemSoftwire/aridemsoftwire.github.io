@@ -1,6 +1,10 @@
+<!-- to watch css - see below -->
+<!-- sass --watch fancy_dog.scss:fancy_dog.css -->
+
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="fancy_dog.js"></script>
         <link rel="stylesheet" href="fancy_dog.css">
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -8,14 +12,30 @@
         <div class="navbar">
             <div class="navbar-container">
                 <ul>
-                    <li><a href="index.html">Start dog</a></li>
-                    <li><a href="dog2.html">Dog 2</a></li>
-                    <li><a href="fancy_dog.html">Dog 3</a></li>
+                    <li><a href="index.html">Less fancy dog</a></li>
+                    <li><a href="dog2.html">Fancier dog</a></li>
+                    <li><a href="fancy_dog.html">Fanciest dog</a></li>
                 </ul>
             </div>
         </div>
     <div class="container">
-
+        <div class="flexbox-top">
+            <div class="profile-picture">
+                <img src="shiba_profile.jpeg" alt="Very fancy dog sir">
+                <div class="ribbon-image">
+                    <img src="ribbon.png" alt="Very fancy ribbon">
+                </div>
+            </div>
+            <div class="overlay-image">
+                <img id="bork-image" src="bork.png" alt="Bork">
+            </div>
+            <div class="dog-description">
+                <p>The Shiba Inu dog breed was originally bred to flush birds and small game, and was occasionally used to hunt wild boar. They’re one of Japan’s six native breeds: Akita (large), Kishu, Hokkaido, Kai, Shikoku (medium), and Shiba (small).</p>
+            </div>
+        </div>
+        <div class="bork-button">
+            <button onclick="showOverlay()">Demonstrate bork</button>
+        </div>
     </div>
         </div>
     </body>
