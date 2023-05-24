@@ -197,7 +197,22 @@ $screen-xl-min: 1200px;
 #nyandog {
         width: 90px;
         height: 60px;
-        z-index: 9999;
+        z-index: 9995;
+    }
+
+.particle {
+    position: absolute;
+    display: block;
+    background: orange;
+    width: 4px;
+    height: 4px;
+    animation: 0.15s twinkle step-end infinite;
+    z-index: 9999;
+    }
+
+@keyframes twinkle {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.7; }
     }
 
 body {

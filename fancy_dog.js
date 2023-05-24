@@ -28,11 +28,53 @@ document.addEventListener('keydown', function(e) {
 });
 
 function activateCheats() {
-    console.log("yello")
-    var marqueeImage = document.getElementById('nyandog');
-    marqueeImage.style.animationPlayState = 'running';
-    marqueeImage.style.display = 'block';
+    var nyandog = document.getElementById('nyandog');
+    nyandog.style.animationPlayState = 'running';
+    particleFactory(nyandog);
+    nyandog.style.display = 'block';
 }
+
+class Particle {
+    constructor(parent) {
+    this.div = document.createElement("div");
+    this.div.classList.add("particle");
+    this.div.classList.add("twinkle");
+    this.div.id = "particle-" + Date.now();
+    parent.appendChild(this.div);
+
+    setTimeout(() => { // remove particle
+        if(this.driftIntervalId) clearInterval(this.driftIntervalId);
+            this.div.remove();
+    }, 400);
+  }
+
+  drift(speed = 1) {
+    var rad = Math.PI * Math.random();
+
+    this.driftIntervalId = setInterval(() => {
+        var left = +this.div.style.left.replace("px",'');
+      var top = +this.div.style.top.replace("px",'');
+
+      left += Math.sin(rad) * speed;
+      top += Math.cos(rad) * speed;
+
+      this.div.style.left = left + "px";
+      this.div.style.top = top + "px";
+    }, 10);
+  }
+}
+
+var particleFactory = function(meteor) {
+    var rect = meteor.getBoundingClientRect();
+  var particle = new Particle(meteor.parentElement);
+  particle.div.style.left = rect.left + "px";
+  particle.div.style.top = rect.top + "px";
+  particle.drift(0.4);
+
+  setTimeout(() => {
+    particleFactory(meteor);
+  }, 100);
+};
 
 function showOverlay() {
     let random = Math.floor(Math.random() * 3) + 1;
@@ -41,7 +83,7 @@ function showOverlay() {
         overlayImage.style.left = '14%';
          overlayImage.style.top = '10%';
     } else if (random === 2) {
-        overlayImage.style.left = '19%';
+        overlayImage.style.left = '19s%';
         overlayImage.style.top = '12%';
     } else if (random === 1) {
         overlayImage.style.left = '25%';
@@ -52,4 +94,3 @@ function showOverlay() {
         overlayImage.style.display = 'none';
       }, 200);
 }
-  
