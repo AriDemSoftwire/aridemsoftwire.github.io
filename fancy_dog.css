@@ -1,6 +1,10 @@
 .container {
   max-width: 576px;
   margin: auto;
+  background-color: #edf1f3;
+  height: 100vh;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 @media (min-width: 768px) {
   .container {
@@ -108,6 +112,43 @@
 }
 .navbar .active {
   background-color: #546a6f;
+}
+
+:root {
+  --width: 1vw;
+  --x-speed: 5s;
+  --y-speed: 7s;
+  --transition-speed: 2.2s;
+}
+
+.el {
+  width: var(--width);
+  height: var(--width);
+  position: absolute;
+}
+
+.x {
+  animation: x var(--x-speed) linear infinite alternate;
+}
+
+.y {
+  animation: y var(--y-speed) linear infinite alternate;
+}
+
+@keyframes x {
+  100% {
+    transform: translateX(calc(100vw - var(--width)));
+  }
+}
+@keyframes y {
+  100% {
+    transform: translateY(calc(100vh - var(--width)));
+  }
+}
+#nyandog {
+  width: 90px;
+  height: 60px;
+  z-index: 9999;
 }
 
 body {
