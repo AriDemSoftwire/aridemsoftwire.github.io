@@ -33,18 +33,18 @@ function activateCheats() {
     particleFactory(nyandog);
     nyandog.style.display = 'block';
 }
-
 class Particle {
-    constructor(parent) {
+  constructor(parent) {
     this.div = document.createElement("div");
     this.div.classList.add("particle");
     this.div.classList.add("twinkle");
     this.div.id = "particle-" + Date.now();
     parent.appendChild(this.div);
+    this.div.style.position = 'absolute'; // Add this line to position the particle
 
     setTimeout(() => { // remove particle
-        if(this.driftIntervalId) clearInterval(this.driftIntervalId);
-            this.div.remove();
+      if (this.driftIntervalId) clearInterval(this.driftIntervalId);
+      this.div.remove();
     }, 400);
   }
 
@@ -52,8 +52,8 @@ class Particle {
     var rad = Math.PI * Math.random();
 
     this.driftIntervalId = setInterval(() => {
-        var left = +this.div.style.left.replace("px",'');
-      var top = +this.div.style.top.replace("px",'');
+      var left = +this.div.style.left.replace("px", '');
+      var top = +this.div.style.top.replace("px", '');
 
       left += Math.sin(rad) * speed;
       top += Math.cos(rad) * speed;
@@ -64,17 +64,18 @@ class Particle {
   }
 }
 
-var particleFactory = function(meteor) {
-    var rect = meteor.getBoundingClientRect();
-  var particle = new Particle(meteor.parentElement);
-  particle.div.style.left = rect.left + "px";
-  particle.div.style.top = rect.top + "px";
+var particleFactory = function (meteor) {
+  var nyandog = document.getElementById('nyandog');
+  var particle = new Particle(nyandog); // Append particles to the body or desired container
+  particle.div.style.left = nyandog.offsetLeft + nyandog.offsetWidth / 2 + "px"; // Adjust positioning relative to the nyandog image
+  particle.div.style.top = nyandog.offsetTop + nyandog.offsetHeight / 2 + "px"; // Adjust positioning relative to the nyandog image
   particle.drift(0.4);
 
   setTimeout(() => {
     particleFactory(meteor);
   }, 100);
 };
+
 
 function showOverlay() {
     let random = Math.floor(Math.random() * 3) + 1;
@@ -94,3 +95,30 @@ function showOverlay() {
         overlayImage.style.display = 'none';
       }, 200);
 }
+
+
+const apiKey = 'maJmrG9kKDKAehs5sqGIu48qYrMhpwQc'; // Replace with your actual Giphy API key
+const searchQuery = 'shiba inu dog'; // Replace with your desired search query
+const rating = 'g'
+
+async function updateDogProfilePicture(searchQuery) {
+  try {
+    const apiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchQuery}&limit=50&rating=${rating}`;
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    // Extract the GIF URL from the API response
+    let randomIndex = Math.floor(Math.random() * 50) + 1;
+    const gifUrl = data.data[randomIndex].images.original.url;
+    
+
+    // Update the dog profile picture element with the GIF
+    const dogProfilePicture = document.getElementById('dog-profile-picture');
+    dogProfilePicture.src = gifUrl;
+  } catch (error) {
+    console.log('Error:', error);
+  }
+}
+
+// Call the function to update the dog profile picture with a random GIF
+updateDogProfilePicture(searchQuery);

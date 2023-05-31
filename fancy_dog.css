@@ -42,6 +42,34 @@
   height: 75px;
   padding-left: 20px;
 }
+.container .flexbox-top .profile-picture .bork-button {
+  position: absolute;
+  height: 60px;
+  width: 50px;
+  top: 200px;
+  background-color: #edf1f3;
+  padding: 0;
+  border: none;
+  z-index: 9990;
+}
+.container .flexbox-top .profile-picture .bork-button #pawprint {
+  display: block;
+  height: 60px;
+  width: 50px;
+  padding-top: 0;
+}
+.container .flexbox-top .profile-picture .bork-button #pawprint:hover {
+  filter: hue-rotate(180deg);
+}
+.container .flexbox-top .profile-picture .bork-button .button-text {
+  position: absolute;
+  top: 80%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  color: #c0d7dc;
+  font-size: 10px;
+  font-weight: bold;
+}
 .container .flexbox-top .overlay-image img {
   height: 30px;
   width: 70px;
@@ -53,18 +81,6 @@
 .container .flexbox-top .dog-description {
   padding-top: 30px;
   padding-left: 30px;
-}
-.container .bork-button {
-  padding-top: 30px;
-}
-.container .bork-button button {
-  background-color: #b0bec1;
-  border: none;
-  color: #30393a;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  padding: 5px;
 }
 
 .navbar {
@@ -148,12 +164,32 @@
 #nyandog {
   width: 90px;
   height: 60px;
+  z-index: 9995;
+  overflow: hidden;
+}
+
+.particle {
+  position: relative;
+  display: block;
+  background: orange;
+  width: 4px;
+  height: 4px;
+  animation: 0.15s twinkle step-end infinite;
   z-index: 9999;
 }
 
+@keyframes twinkle {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
 body {
   margin: 0px;
   font-family: "Verdana";
+  overflow-x: hidden;
 }
 
 /*# sourceMappingURL=fancy_dog.css.map */

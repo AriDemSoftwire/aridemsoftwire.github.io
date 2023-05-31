@@ -28,10 +28,14 @@
     <div class="container">
         <div class="flexbox-top">
             <div class="profile-picture">
-                <img src="shiba_profile.jpeg" alt="Very fancy dog sir">
+                <img id="dog-profile-picture" src="shiba_profile.jpeg" alt="Very fancy dog sir">
                 <div class="ribbon-image">
                     <img src="ribbon.png" alt="Very fancy ribbon">
                 </div>
+                <button class="bork-button" onclick="showOverlay()">
+                    <img id="pawprint" src="pawprint.png" alt="Bork button">
+                    <span class="button-text">Bork</span>
+                  </button>
             </div>
             <div class="overlay-image">
                 <img id="bork-image" src="bork.png" alt="Bork">
@@ -45,9 +49,6 @@
                 <p>The Shiba Inu dog breed was originally bred to flush birds and small game, and was occasionally used to hunt wild boar. 
                     They’re one of Japan’s six native breeds: Akita (large), Kishu, Hokkaido, Kai, Shikoku (medium), and Shiba (small).</p>
             </div>
-        </div>
-        <div class="bork-button">
-            <button onclick="showOverlay()">Demonstrate bork</button>
         </div>
     </div>
     </body>
