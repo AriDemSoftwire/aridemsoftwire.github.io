@@ -2,9 +2,9 @@
   max-width: 576px;
   margin: auto;
   background-color: #edf1f3;
-  height: 100vh;
   padding-left: 30px;
   padding-right: 30px;
+  padding-bottom: 50px;
 }
 @media (min-width: 768px) {
   .container {
@@ -81,6 +81,79 @@
 .container .flexbox-top .dog-description {
   padding-top: 30px;
   padding-left: 30px;
+}
+.container .flexbox-middle h1 {
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.container .flexbox-middle .dog-videos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.container .flexbox-middle .dog-videos h2 {
+  font-size: 16px;
+  font-weight: lighter;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.container .flexbox-middle .dog-videos iframe {
+  height: 75%;
+  width: 75%;
+}
+.container .flexbox-resources h1 {
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.container .flexbox-resources li a {
+  text-decoration: none;
+  color: #004e75;
+}
+.container .flexbox-resources li a:hover {
+  color: #00aaff;
+}
+.container .flexbox-kennels {
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  /* Style the collapsible content. Note: hidden by default */
+}
+.container .flexbox-kennels h1 {
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.container .flexbox-kennels .collapsible {
+  color: #004e75;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: "Verdana";
+  font-size: 16px;
+}
+.container .flexbox-kennels .active, .container .flexbox-kennels .collapsible:hover {
+  color: #00aaff;
+}
+.container .flexbox-kennels .content {
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  font-family: "Verdana";
+  font-size: 16px;
+  color: #004e75;
+  padding: 5px;
+}
+.container .flexbox-kennels .content li img {
+  height: 12px;
+  width: 10px;
+}
+.container .flexbox-kennels .content li a {
+  text-decoration: none;
+  color: #004e75;
+  font-weight: bold;
+}
+.container .flexbox-kennels .content li a:hover {
+  color: #00aaff;
 }
 
 .navbar {

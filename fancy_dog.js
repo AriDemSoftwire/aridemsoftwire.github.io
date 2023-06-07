@@ -1,3 +1,5 @@
+//konami code - flying shib
+
 var allowedKeys = {
     37: 'left',
     38: 'up',
@@ -33,6 +35,26 @@ function activateCheats() {
     particleFactory(nyandog);
     nyandog.style.display = 'block';
 }
+
+//collapsible page elements
+document.addEventListener("DOMContentLoaded", function() {
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  }
+});
+
+//konami code - particles following the shib
 class Particle {
   constructor(parent) {
     this.div = document.createElement("div");
@@ -40,9 +62,9 @@ class Particle {
     this.div.classList.add("twinkle");
     this.div.id = "particle-" + Date.now();
     parent.appendChild(this.div);
-    this.div.style.position = 'absolute'; // Add this line to position the particle
+    this.div.style.position = 'absolute'; 
 
-    setTimeout(() => { // remove particle
+    setTimeout(() => { 
       if (this.driftIntervalId) clearInterval(this.driftIntervalId);
       this.div.remove();
     }, 400);
@@ -66,9 +88,9 @@ class Particle {
 
 var particleFactory = function (meteor) {
   var nyandog = document.getElementById('nyandog');
-  var particle = new Particle(nyandog); // Append particles to the body or desired container
-  particle.div.style.left = nyandog.offsetLeft + nyandog.offsetWidth / 2 + "px"; // Adjust positioning relative to the nyandog image
-  particle.div.style.top = nyandog.offsetTop + nyandog.offsetHeight / 2 + "px"; // Adjust positioning relative to the nyandog image
+  var particle = new Particle(nyandog); 
+  particle.div.style.left = nyandog.offsetLeft + nyandog.offsetWidth / 2 + "px"; 
+  particle.div.style.top = nyandog.offsetTop + nyandog.offsetHeight / 2 + "px"; 
   particle.drift(0.4);
 
   setTimeout(() => {
@@ -96,9 +118,9 @@ function showOverlay() {
       }, 200);
 }
 
-
-const apiKey = 'maJmrG9kKDKAehs5sqGIu48qYrMhpwQc'; // Replace with your actual Giphy API key
-const searchQuery = 'shiba inu dog'; // Replace with your desired search query
+//random shiba gif on the home page
+const apiKey = 'maJmrG9kKDKAehs5sqGIu48qYrMhpwQc'; 
+const searchQuery = 'shiba inu dog'; 
 const rating = 'g'
 
 async function updateDogProfilePicture(searchQuery) {
@@ -107,12 +129,10 @@ async function updateDogProfilePicture(searchQuery) {
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    // Extract the GIF URL from the API response
     let randomIndex = Math.floor(Math.random() * 50) + 1;
     const gifUrl = data.data[randomIndex].images.original.url;
     
 
-    // Update the dog profile picture element with the GIF
     const dogProfilePicture = document.getElementById('dog-profile-picture');
     dogProfilePicture.src = gifUrl;
   } catch (error) {
@@ -120,5 +140,4 @@ async function updateDogProfilePicture(searchQuery) {
   }
 }
 
-// Call the function to update the dog profile picture with a random GIF
 updateDogProfilePicture(searchQuery);
