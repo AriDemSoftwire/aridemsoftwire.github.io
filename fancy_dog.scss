@@ -210,9 +210,14 @@ $screen-xl-min: 1200px;
             padding: 5px;
 
             li {
-                img {
-                    height: 12px;
-                    width: 10px;
+                #google-maps {
+                    height: 15px;
+                    width: 12px;
+                }
+
+                #social-media {
+                    height: 15px;
+                    width: 15px;
                 }
             }
 
@@ -225,7 +230,7 @@ $screen-xl-min: 1200px;
                     color: $link_hover
                 }
             }
-          }
+        }
     }
 }
 

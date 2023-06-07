@@ -143,9 +143,13 @@
   color: #004e75;
   padding: 5px;
 }
-.container .flexbox-kennels .content li img {
-  height: 12px;
-  width: 10px;
+.container .flexbox-kennels .content li #google-maps {
+  height: 15px;
+  width: 12px;
+}
+.container .flexbox-kennels .content li #social-media {
+  height: 15px;
+  width: 15px;
 }
 .container .flexbox-kennels .content li a {
   text-decoration: none;
