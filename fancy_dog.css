@@ -8,32 +8,41 @@
 }
 @media (min-width: 768px) {
   .container {
-    max-width: 600px;
+    max-width: 768px;
   }
 }
 @media (min-width: 992px) {
   .container {
-    max-width: 800px;
+    max-width: 992px;
   }
 }
 @media (min-width: 1200px) {
   .container {
-    max-width: 1000px;
+    max-width: 1200px;
   }
 }
 .container .flexbox-top {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 576px) {
+  .container .flexbox-top {
+    flex-direction: row;
+  }
 }
 .container .flexbox-top .profile-picture {
   position: relative;
   padding-top: 15px;
+  z-index: 1;
 }
 .container .flexbox-top .profile-picture img {
   border-radius: 50%;
   width: 225px;
   height: 200px;
   padding: 20px;
+  z-index: 1;
 }
 .container .flexbox-top .profile-picture .ribbon-image img {
   position: absolute;
@@ -41,6 +50,7 @@
   width: 225px;
   height: 75px;
   padding-left: 20px;
+  z-index: 2;
 }
 .container .flexbox-top .profile-picture .bork-button {
   position: absolute;
@@ -50,13 +60,14 @@
   background-color: #edf1f3;
   padding: 0;
   border: none;
-  z-index: 9990;
+  z-index: 3;
 }
 .container .flexbox-top .profile-picture .bork-button #pawprint {
   display: block;
   height: 60px;
   width: 50px;
   padding-top: 0;
+  z-index: 4;
 }
 .container .flexbox-top .profile-picture .bork-button #pawprint:hover {
   filter: hue-rotate(180deg);
@@ -77,20 +88,31 @@
   left: 200px;
   position: absolute;
   display: none;
+  z-index: 500;
 }
 .container .flexbox-top .dog-description {
   padding-top: 30px;
-  padding-left: 30px;
+}
+@media (min-width: 576px) {
+  .container .flexbox-top .dog-description {
+    flex-direction: row;
+    padding-left: 30px;
+  }
 }
 .container .flexbox-middle h1 {
   font-size: 18px;
-  margin-top: 5px;
+  margin-top: 15px;
   margin-bottom: 5px;
 }
 .container .flexbox-middle .dog-videos {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
+}
+@media (min-width: 576px) {
+  .container .flexbox-middle .dog-videos {
+    flex-direction: row;
+  }
 }
 .container .flexbox-middle .dog-videos h2 {
   font-size: 16px;
@@ -137,7 +159,6 @@
 .container .flexbox-kennels .content {
   display: none;
   overflow: hidden;
-  background-color: #f1f1f1;
   font-family: "Verdana";
   font-size: 16px;
   color: #004e75;
@@ -163,52 +184,75 @@
 .navbar {
   max-width: 100%;
   background-color: #30393a;
+  overflow: hidden;
 }
 .navbar .navbar-container {
   max-width: 576px;
   margin: auto;
+  background-color: #30393a;
 }
 @media (min-width: 768px) {
   .navbar .navbar-container {
-    max-width: 600px;
+    max-width: 768px;
   }
 }
 @media (min-width: 992px) {
   .navbar .navbar-container {
-    max-width: 800px;
+    max-width: 992px;
   }
 }
 @media (min-width: 1200px) {
   .navbar .navbar-container {
-    max-width: 1000px;
+    max-width: 1200px;
   }
 }
-.navbar ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #30393a;
-}
-.navbar li {
-  float: left;
-}
-.navbar li a {
+.navbar a {
   display: block;
   color: #c0d7dc;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  float: left;
+  font-size: 17px;
 }
-.navbar li a:hover {
+.navbar a:hover {
   background-color: #546a6f;
 }
-.navbar .active {
+.navbar a.active {
   background-color: #546a6f;
+}
+.navbar .icon {
+  display: none;
+}
+@media screen and (max-width: 576px) {
+  .navbar a {
+    display: none;
+  }
+  .navbar a.icon {
+    float: right;
+    display: block;
+  }
+}
+@media screen and (max-width: 576px) {
+  .navbar .navbar-container.responsive {
+    position: relative;
+  }
+  .navbar .navbar-container.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    float: right;
+  }
+  .navbar .navbar-container.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
 }
 
 :root {
   --width: 1vw;
+  --height: 1vh;
   --x-speed: 5s;
   --y-speed: 7s;
   --transition-speed: 2.2s;
@@ -216,7 +260,7 @@
 
 .el {
   width: var(--width);
-  height: var(--width);
+  height: var(--height);
   position: absolute;
 }
 
@@ -230,12 +274,12 @@
 
 @keyframes x {
   100% {
-    transform: translateX(calc(100vw - var(--width)));
+    transform: translateX(calc(100vw - var(--width) - 50px));
   }
 }
 @keyframes y {
   100% {
-    transform: translateY(calc(100vh - var(--width)));
+    transform: translateY(calc(100vh - var(--height) - 75px));
   }
 }
 #nyandog {

@@ -54,6 +54,17 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
+//navbar 
+function displayDropdown() {
+  console.log("wahey")
+  var x = document.getElementById("topbar");
+  if (x.className === "navbar-container") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar-container";
+  }
+}
+
 //konami code - particles following the shib
 class Particle {
   constructor(parent) {

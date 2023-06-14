@@ -48,30 +48,38 @@ $screen-xl-min: 1200px;
     padding-bottom: 50px;
 
     @include md {
-        max-width: 600px;
+        max-width: $screen-md-min;
     }
 
     @include lg {
-        max-width: 800px;
+        max-width: $screen-lg-min;
     }
 
     @include xl {
-        max-width: 1000px;
+        max-width: $screen-xl-min;
     }
 
     .flexbox-top {
         display: flex; 
-        flex-direction: row;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     
+        @include sm {
+            flex-direction: row;
+        }
+
         .profile-picture {
             position: relative; 
             padding-top: 15px;
+            z-index: 1;
 
             img {
                 border-radius: 50%;
                 width: 225px;
                 height: 200px;
                 padding: 20px;
+                z-index: 1;
             }
 
             .ribbon-image {
@@ -81,6 +89,7 @@ $screen-xl-min: 1200px;
                     width: 225px;
                     height: 75px;
                     padding-left: 20px;
+                    z-index: 2;
                 }
             }
 
@@ -92,13 +101,14 @@ $screen-xl-min: 1200px;
                 background-color: $background;
                 padding: 0;
                 border: none;
-                z-index: 9990;
+                z-index: 3;
         
                 #pawprint {
                   display: block;
                   height: 60px;
                   width: 50px;
                   padding-top: 0;
+                  z-index: 4;
         
                   &:hover {
                     filter: hue-rotate(180deg);
@@ -125,26 +135,36 @@ $screen-xl-min: 1200px;
                 left: 200px;
                 position: absolute;
                 display: none;
+                z-index: 500;
             }
           }
 
         .dog-description {
             padding-top: 30px;
-            padding-left: 30px;
+
+            @include sm {
+                flex-direction: row;
+                padding-left: 30px;
+            }
         }
     }
 
     .flexbox-middle {
+
         h1 {
             font-size: 18px;
-            margin-top: 5px;
+            margin-top: 15px;
             margin-bottom: 5px;
         }
 
         .dog-videos {
             display: flex; 
-            flex-direction: row;
+            flex-direction: column;
             justify-content: space-between;
+
+            @include sm {
+                flex-direction: row;
+            }
 
             h2 {
                 font-size: 16px;
@@ -203,7 +223,6 @@ $screen-xl-min: 1200px;
           .content {
             display: none;
             overflow: hidden;
-            background-color: #f1f1f1;
             font-family: 'Verdana';
             font-size: 16px;
             color: $link;
@@ -237,54 +256,84 @@ $screen-xl-min: 1200px;
 .navbar {
     max-width: 100%;
     background-color: $primary_1;
+    overflow: hidden;
+
     .navbar-container {
         max-width: $screen-sm-min;
         margin: auto;
+        background-color: $primary_1;
 
         @include md {
-            max-width: 600px;
+            max-width: $screen-md-min;
         }
 
         @include lg {
-            max-width: 800px;
+            max-width: $screen-lg-min;
         }
 
         @include xl {
-            max-width: 1000px;
+            max-width: $screen-xl-min;
         }
     }
-
-    & ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: $primary_1;
-    }
     
-    & li {
-        float: left;
-    }
-    
-    & li a {
+    & a {
         display: block;
         color: $primary_2;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
+        float: left;
+        font-size: 17px;
     }
     
-    & li a:hover {
+    & a:hover {
         background-color: $highlight_1
     }
-    & .active {
+
+    & a.active {
         background-color: $highlight_1;
+    }
+
+    & .icon {
+        display: none;
+      }
+
+      @media screen and (max-width: $screen-sm-min) {
+
+        & a {
+            display: none;
+        }
+
+        & a.icon {
+          float: right;
+          display: block;
+        }
+      }
+      
+      @media screen and (max-width: $screen-sm-min) {
+        .navbar-container.responsive {
+            position: relative;
+        }
+
+        .navbar-container.responsive a.icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+            float: right;
+        }
+
+        .navbar-container.responsive a {
+          float: none;
+          display: block;
+          text-align: left;
+        }
     }
 }
 
 //konami stuff
 :root {
     --width: 1vw;
+    --height: 1vh; 
     --x-speed: 5s;
     --y-speed: 7s;
     --transition-speed: 2.2s;
@@ -293,7 +342,7 @@ $screen-xl-min: 1200px;
 
 .el { 
     width: var(--width);
-    height: var(--width);
+    height: var(--height);
     position: absolute;
   }
   
@@ -306,14 +355,15 @@ $screen-xl-min: 1200px;
   
   @keyframes x {
     100% {
-      transform: translateX(calc(100vw - var(--width)));
+        transform: translateX(calc(100vw - var(--width) - 50px)); 
     }
-  }
-  @keyframes y {
+}
+
+@keyframes y {
     100% {
-      transform: translateY(calc(100vh - var(--width)));
+        transform: translateY(calc(100vh - var(--height) - 75px)); 
     }
-  }
+}
 
 #nyandog {
         width: 90px;
